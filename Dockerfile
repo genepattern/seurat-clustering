@@ -27,7 +27,7 @@ RUN pip install umap-learn
 COPY run_seurat_clustering.R /seurat/run_seurat_clustering.R
 USER root
 RUN chmod -R a+rwx /seurat
-USER $NB_USER
+#USER $NB_USER
 
 ENTRYPOINT []
 

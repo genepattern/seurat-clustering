@@ -1,9 +1,9 @@
-#Tue, 17 Dec 2019 13:14:51 -0800
+#Tue, 17 Dec 2019 14:15:10 -0800
 JVMLevel=
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:999999999
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
 categories=SingleCell
-commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run-seurat-clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> 
+commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> 
 
 cpuType=any
 description=performs clustering on Seurat RDS objects
@@ -86,7 +86,7 @@ p5_type=java.lang.String
 p5_value=umap;tsne
 
 privacy=public
-publicationDate=12/17/2019 13\:14 
+publicationDate=12/17/2019 14\:15 
 quality=${quality.level}
 requiredPatchLSIDs=
 requiredPatchURLs=

@@ -15,7 +15,6 @@
 # GenePattern to flag the job as failing even when nothing went wrong. 
 suppressMessages(suppressWarnings(library(getopt)))
 suppressMessages(suppressWarnings(library(optparse)))
-#suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(Seurat)))
 
 # Print the sessionInfo so that there is a listing of loaded packages, 
@@ -48,7 +47,7 @@ print(opt)
 opts <- opt$options
 
 pbmc=NULL
-
+cat("Loading from ", opts$input.file)
 if (file.exists(opts$input.file)){
 	pbmc = readRDS(opts$input.file)
 }
