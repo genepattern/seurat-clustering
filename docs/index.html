@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html class="">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>SeuratClustering GenePattern Module</title>
+  <link href="./assets/docstyle.css" media="all" rel="stylesheet">
+  <style type="text/css"></style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="authenticity_token" name="csrf-param">
+</head>
+<body >
+
+<script>
+</script>
+	
+	<div class="gp-content-header fluid">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+			        <h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
+                                <h1><big>SeuratClustering</big></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				
+<br/>
+<dl class="dl-horizontal">
+	<dt>LSID</dt>
+	<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00408</dd>
+	<dt>Author(s)</dt>
+	<dd>Satija Lab, NY Genome Center, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
+	<dt>Contact(s)</dt>
+	<dd><p>Algorithm and scientific questions: satijalab.org</p>
+<p>Module wrapping issues:&nbsp; Ted Liefeld &nbsp;&lt; jliefeld at cloud dot ucsd dot edu&gt;</p>
+</dd>
+</dl>
+
+
+<hr>
+
+<h2>Introduction</h2>
+
+<p>Seurat is an R package designed for QC, analysis, and exploration of single-cell RNA-seq data. Seurat aims to enable users to identify and interpret sources of heterogeneity from single-cell transcriptomic measurements, and to integrate diverse types of single-cell data.</p>
+
+<h2>Algorithm</h2>
+<p>
+</p>
+
+
+<h2>References</h2>
+<p><a href="https://satijalab.org/seurat/">https://satijalab.org/seurat/</a></p>
+
+<h2>Input Files</h2>
+
+<ol>
+	<li> input seurat rds file*<br>
+ A rds (from the r language) file containing a Seurat object.</li>
+</ol>
+
+<h2>Output Files</h2>
+
+<ol>
+	<li>&lt;output filename&gt;.rds<br/>
+	Output file contaiing a Seurat object in rds format .</li>
+
+</ol>
+
+<h2>Example Data</h2>
+
+
+<h2>Requirements</h2>
+
+<p>GenePattern 3.9.11 or later (dockerized).</p>
+
+
+<h2>Parameters</h2>
+
+<table class="table table-striped">
+	
+	<tbody>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>input seurat rds file*</td>
+			<td>A rds file containig a Seurat object.</td>
+		</tr>
+                <tr>
+                        <td>output filename*</td>
+                        <td>The name of the output rds file containing a Seurat object.</td>
+                </tr>
+                 <tr>
+                        <td>maximum dimension</td>
+                        <td>The maximum number of clusters to attempt to find</td>
+                </tr>
+ 
+
+		<tr>
+			<td>resolution*</td>
+			<td>The resolution to use to find clusters.</td>
+		</tr>
+
+               <tr>
+                        <td>reduction*</td>
+                        <td>The reduction to use (umap/tsne).</td>
+                </tr>
+
+	</tbody>
+</table>
+
+<p><span style="color: red;">*</span> - required</p>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	<footer class="container fluid gp-footer">
+	<div class="fluid text-center">©2006-2020 Regents of the University of California &amp; The Broad Institute of MIT and Harvard</div> 
+</footer>
+
+
+
+<div id="feedly-mini" title="feedly Mini tookit"></div></body></html>
+
