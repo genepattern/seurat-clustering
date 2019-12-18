@@ -15,6 +15,7 @@
 # GenePattern to flag the job as failing even when nothing went wrong. 
 suppressMessages(suppressWarnings(library(getopt)))
 suppressMessages(suppressWarnings(library(optparse)))
+#suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(Seurat)))
 
 # Print the sessionInfo so that there is a listing of loaded packages, 
@@ -47,16 +48,17 @@ print(opt)
 opts <- opt$options
 
 pbmc=NULL
-cat("Loading from ", opts$input.file)
+
 if (file.exists(opts$input.file)){
 	pbmc = readRDS(opts$input.file)
 }
+pdf(paste(opts$output.file, ".pdf", sep=""))
 
 pbmc <- FindNeighbors(pbmc, dims = 1:opts$max_dim)
 pbmc <- FindClusters(pbmc, resolution = opts$resolution)
 pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim)
 DimPlot(pbmc, reduction = opts$reduction)
-saveRDS(pbmc, file = opts$output.file)
+saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
 
 
 
