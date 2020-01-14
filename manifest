@@ -1,18 +1,18 @@
 #Tue, 17 Dec 2019 14:15:10 -0800
 JVMLevel=
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:999999999
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.1
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
-categories=SingleCell
-commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> 
+categories=SingleCell;Clustering
+commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction>
 
 cpuType=any
-description=performs clustering on Seurat RDS objects
+description=performs clustering (and marker identification) on Seurat RDS objects
 fileFormat=pdf,rds
 language=any
 minGenePatternVersion=3.9.13
 name=SeuratClustering
 os=any
-job.docker.image=genepattern/seurat-clustering
+job.docker.image=genepattern/seurat-clustering:1.0
 
 p1_MODE=IN
 p1_TYPE=FILE
@@ -86,7 +86,7 @@ p5_type=java.lang.String
 p5_value=umap;tsne
 
 privacy=public
-publicationDate=12/17/2019 14\:15 
+publicationDate=2020-01-14
 quality=${quality.level}
 requiredPatchLSIDs=
 requiredPatchURLs=
