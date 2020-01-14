@@ -1,7 +1,7 @@
 ## The Regents of the University of California and The Broad Institute
 ## SOFTWARE COPYRIGHT NOTICE AGREEMENT
 ## This software and its documentation are copyright (2018) by the
-## Regents of the University of California abd the 
+## Regents of the University of California abd the
 ## Broad Institute/Massachusetts Institute of Technology. All rights are
 ## reserved.
 ##
@@ -12,13 +12,13 @@
 # Load any packages used to in our code to interface with GenePattern.
 # Note the use of suppressMessages and suppressWarnings here.  The package
 # loading process is often noisy on stderr, which will (by default) cause
-# GenePattern to flag the job as failing even when nothing went wrong. 
+# GenePattern to flag the job as failing even when nothing went wrong.
 suppressMessages(suppressWarnings(library(getopt)))
 suppressMessages(suppressWarnings(library(optparse)))
-#suppressMessages(suppressWarnings(library(dplyr)))
+suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(Seurat)))
 
-# Print the sessionInfo so that there is a listing of loaded packages, 
+# Print the sessionInfo so that there is a listing of loaded packages,
 # the current version of R, and other environmental information in our
 # stdout file.  This can be useful for reproducibility, troubleshooting
 # and comparing between runs.
@@ -54,13 +54,40 @@ if (file.exists(opts$input.file)){
 }
 pdf(paste(opts$output.file, ".pdf", sep=""))
 
+print('FindNeighbors')
 pbmc <- FindNeighbors(pbmc, dims = 1:opts$max_dim)
+print('FindClusters')
 pbmc <- FindClusters(pbmc, resolution = opts$resolution)
+print('RunUMAP')
 pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim)
+print('DimPlot')
 DimPlot(pbmc, reduction = opts$reduction)
+# print("There are this many clusters")
+
+# saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
+
+# 2020-01-14 EFJ adding the next steps
+
+# find all markers of cluster 1
+# cluster1.markers <- FindMarkers(pbmc, ident.1 = 1, min.pct = 0.25)
+# head(cluster1.markers, n = 5)
+
+#ADD min.pc and logfc.threshold as MODULE PARAMETERS
+# find markers for every cluster compared to all remaining cells, report only the positive ones
+print('Finding markers for all clusters.')
+pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+print('Here are the top to markers for each cluster')
+pbmc.markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_logFC)
+write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_logFC),paste(opts$output.file, ".csv", sep=""), row.names = FALSE)
+
+# This is too specific to PBMC, so it won't be implemented
+# new.cluster.ids <- c("Naive CD4 T", "Memory CD4 T", "CD14+ Mono", "B", "CD8 T", "FCGR3A+ Mono",
+#     "NK", "DC", "Platelet")
+# names(new.cluster.ids) <- levels(pbmc)
+# pbmc <- RenameIdents(pbmc, new.cluster.ids)
+# DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
+
+# saveRDS(pbmc, file = "../output/pbmc3k_final.rds")
+
 saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
-
-
-
-
-
+print("All done, move along!")
