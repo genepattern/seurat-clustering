@@ -12,7 +12,7 @@ language=any
 minGenePatternVersion=3.9.13
 name=SeuratClustering
 os=any
-job.docker.image=genepattern/seurat-clustering:1.0
+job.docker.image=genepattern/seurat-clustering:1.1
 
 p1_MODE=IN
 p1_TYPE=FILE
@@ -106,4 +106,4 @@ requiredPatchLSIDs=
 requiredPatchURLs=
 taskDoc=doc.html
 taskType=SingleCell
-version=Adding number of cluster markers as option.
+version=Adding number of cluster markers as option + fixed docker container.

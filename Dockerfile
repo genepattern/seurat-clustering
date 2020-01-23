@@ -32,4 +32,4 @@ RUN chmod -R a+rwx /seurat
 ENTRYPOINT []
 
 # build using this:
-# docker build -t genepattern/seurat-clustering:1.0 .
+# docker build -t genepattern/seurat-clustering:1.1 .
