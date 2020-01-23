@@ -38,7 +38,8 @@ option_list <- list(
   make_option("--output.file", dest="output.file"),
   make_option("--max_dim", dest="max_dim", type="integer"),
   make_option("--resolution", dest="resolution", type="double"),
-  make_option("--reduction", dest="reduction")
+  make_option("--reduction", dest="reduction"),
+  make_option("--nmarkers", dest="nmarkers",type="integer")
 )
 
 # Parse the command line arguments with the option list, printing the result
@@ -76,9 +77,10 @@ DimPlot(pbmc, reduction = opts$reduction)
 # find markers for every cluster compared to all remaining cells, report only the positive ones
 print('Finding markers for all clusters.')
 pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
-print('Here are the top to markers for each cluster')
-pbmc.markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_logFC)
-write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_logFC),paste(opts$output.file, ".csv", sep=""), row.names = FALSE)
+print('Here are the top markers for each cluster')
+pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_logFC)
+write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_logFC),paste(opts$output.file, ".csv", sep=""), row.names = FALSE)
+write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_logFC),paste(opts$output.file, "_all_markers.csv", sep=""), row.names = FALSE)
 
 # This is too specific to PBMC, so it won't be implemented
 # new.cluster.ids <- c("Naive CD4 T", "Memory CD4 T", "CD14+ Mono", "B", "CD8 T", "FCGR3A+ Mono",

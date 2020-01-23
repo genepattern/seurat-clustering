@@ -1,9 +1,9 @@
 #Tue, 17 Dec 2019 14:15:10 -0800
 JVMLevel=
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.2
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.3
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
 categories=SingleCell;Clustering
-commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction>
+commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers>
 
 cpuType=any
 description=Companion module for the <a href="">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
@@ -85,6 +85,20 @@ p5_prefix_when_specified=
 p5_type=java.lang.String
 p5_value=umap;tsne
 
+p6_MODE=
+p6_TYPE=Integer
+p6_default_value=50
+p6_description=How many cluster markers to output (a CSV file with this number of top markers per cluster will be created in addition to a CSV file with all of the cluster markers found)
+p6_fileFormat=
+p6_flag=--nmarkers
+p6_name=nmarkers
+p6_numValues=0..1
+p6_optional=
+p6_prefix=
+p6_prefix_when_specified=
+p6_type=java.lang.Integer
+p6_value=
+
 privacy=public
 publicationDate=2020-01-14
 quality=${quality.level}
@@ -92,4 +106,4 @@ requiredPatchLSIDs=
 requiredPatchURLs=
 taskDoc=doc.html
 taskType=SingleCell
-version=Updating module description.
+version=Adding number of cluster markers as option.
