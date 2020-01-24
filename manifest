@@ -1,12 +1,12 @@
 #Tue, 17 Dec 2019 14:15:10 -0800
 JVMLevel=
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.3
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.6
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
 categories=SingleCell;Clustering
 commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers>
 
 cpuType=any
-description=Companion module for the <a href="">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
+description=Companion module for the <a href="https://notebook.genepattern.org/services/sharing/notebooks/376/preview/">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
 fileFormat=pdf,rds
 language=any
 minGenePatternVersion=3.9.13
@@ -74,7 +74,7 @@ p4_value=
 p5_MODE=
 p5_TYPE=TEXT
 p5_default_value=umap
-p5_description=The reduction to use (umap/tsne)
+p5_description=The reduction to use (only umap is implemente in version 0.6 of this module, version 0.7 will include tsne)
 p5_fileFormat=
 p5_flag=
 p5_name=reduction
@@ -83,7 +83,7 @@ p5_optional=
 p5_prefix=
 p5_prefix_when_specified=
 p5_type=java.lang.String
-p5_value=umap;tsne
+p5_value=umap
 
 p6_MODE=
 p6_TYPE=Integer
@@ -106,4 +106,4 @@ requiredPatchLSIDs=
 requiredPatchURLs=
 taskDoc=doc.html
 taskType=SingleCell
-version=Adding number of cluster markers as option + fixed docker container.
+version=Adding link to notebeook + patching a parameter so it reflects the actual options.
