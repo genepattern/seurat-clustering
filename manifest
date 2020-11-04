@@ -12,7 +12,7 @@ language=any
 minGenePatternVersion=3.9.13
 name=SeuratClustering
 os=any
-job.docker.image=genepattern/seurat-clustering
+job.docker.image=genepattern/seurat-clustering:3.2
 
 p1_MODE=IN
 p1_TYPE=FILE
