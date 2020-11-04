@@ -38,7 +38,9 @@ option_list <- list(
   make_option("--output.file", dest="output.file"),
   make_option("--max_dim", dest="max_dim", type="integer"),
   make_option("--resolution", dest="resolution", type="double"),
-  make_option("--reduction", dest="reduction")
+  make_option("--reduction", dest="reduction"),
+  make_option("--seed", dest="seed", type="integer"),
+
 )
 
 # Parse the command line arguments with the option list, printing the result
@@ -55,7 +57,7 @@ if (file.exists(opts$input.file)){
 
 pbmc <- FindNeighbors(pbmc, dims = 1:opts$max_dim)
 pbmc <- FindClusters(pbmc, resolution = opts$resolution)
-pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim)
+pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim, seed.use=opts$seed)
 DimPlot(pbmc, reduction = opts$reduction)
 saveRDS(pbmc, file = opts$output.file)
 
