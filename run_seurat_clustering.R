@@ -39,7 +39,9 @@ option_list <- list(
   make_option("--max_dim", dest="max_dim", type="integer"),
   make_option("--resolution", dest="resolution", type="double"),
   make_option("--reduction", dest="reduction"),
-  make_option("--nmarkers", dest="nmarkers",type="integer")
+  make_option("--nmarkers", dest="nmarkers",type="integer"),
+  make_option("--seed", dest="seed",type="integer")
+
 )
 
 # Parse the command line arguments with the option list, printing the result
@@ -60,7 +62,7 @@ pbmc <- FindNeighbors(pbmc, dims = 1:opts$max_dim)
 print('FindClusters')
 pbmc <- FindClusters(pbmc, resolution = opts$resolution)
 print('RunUMAP')
-pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim)
+pbmc <- RunUMAP(pbmc, dims = 1:opts$max_dim, seed.use=opts$seed)
 print('DimPlot')
 DimPlot(pbmc, reduction = opts$reduction)
 # print("There are this many clusters")

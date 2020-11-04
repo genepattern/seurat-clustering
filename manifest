@@ -3,7 +3,7 @@ JVMLevel=
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.6
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
 categories=SingleCell;Clustering
-commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers>
+commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers> --seed\=<seed>
 
 cpuType=any
 description=Companion module for the <a href="https://notebook.genepattern.org/services/sharing/notebooks/376/preview/">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
@@ -12,7 +12,7 @@ language=any
 minGenePatternVersion=3.9.13
 name=SeuratClustering
 os=any
-job.docker.image=genepattern/seurat-clustering:1.1
+job.docker.image=genepattern/seurat-clustering:1.2
 
 p1_MODE=IN
 p1_TYPE=FILE
@@ -98,6 +98,21 @@ p6_prefix=
 p6_prefix_when_specified=
 p6_type=java.lang.Integer
 p6_value=
+
+p7_MODE=IN
+p7_TYPE=
+p7_default_value=17
+p7_description=Random number seed.
+p7_fileFormat=
+p7_flag=
+p7_nameseed
+p7_numValues=1
+p7_optional=on
+p7_prefix=
+p7_prefix_when_specified=
+p7_type=java.lang.String
+p7_value=
+
 
 privacy=public
 publicationDate=2020-01-14
