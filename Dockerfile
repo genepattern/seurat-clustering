@@ -23,6 +23,7 @@ USER $NB_USER
 # RUN source activate python3.6
 COPY install_stuff.R /seurat/install_stuff.R
 RUN /opt/R3.6/bin/Rscript /seurat/install_stuff.R
+RUN pip install llvmlite --ignore-installed
 RUN pip install umap-learn
 COPY run_seurat_clustering.R /seurat/run_seurat_clustering.R
 USER root

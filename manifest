@@ -1,6 +1,6 @@
 #Tue, 17 Dec 2019 14:15:10 -0800
 JVMLevel=
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:0.6
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:999988887777
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld, UCSD School of Medicine.
 categories=SingleCell;Clustering
 commandLine=/opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore /seurat/run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename>.rds --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers> --seed\=<seed>
@@ -10,7 +10,7 @@ description=Companion module for the <a href="https://notebook.genepattern.org/s
 fileFormat=pdf,rds
 language=any
 minGenePatternVersion=3.9.13
-name=SeuratClustering
+name=Seurat.Clustering
 os=any
 job.docker.image=genepattern/seurat-clustering:1.2
 
@@ -59,7 +59,7 @@ p3_value=
 #  <gene.sets.database> <link.to.msigdb> <url.in.description>
 p4_MODE=IN
 p4_TYPE=
-p4_default_value=0.5
+p4_default_value=0.05
 p4_description=resolution
 p4_fileFormat=
 p4_numValues=1
@@ -105,7 +105,7 @@ p7_default_value=17
 p7_description=Random number seed.
 p7_fileFormat=
 p7_flag=
-p7_nameseed
+p7_name=seed
 p7_numValues=1
 p7_optional=on
 p7_prefix=
