@@ -74,7 +74,7 @@ For details of the Seurat implementation please refer to the <a href="https://sa
 
 <ol>
 	<li>&lt;output filename&gt;.rds<br/>
-	Output file contaiing a Seurat object in rds format .</li>
+	Output RDS file containing a Seurat object that contains the cluster details for optional further processing.</li>
         <li>&lt;output filename&gt;_all_markers.csv<br/>
         Comma delimited file containing "p_val","avg_logFC","pct.1","pct.2","p_val_adj","cluster","gene" for the marker genes.</li>
         <li>&lt;output_filename&gt;.clustered.csv<br/>
@@ -84,7 +84,7 @@ For details of the Seurat implementation please refer to the <a href="https://sa
 </ol>
 
 <h2>Example Data</h2>
-<p>iA sample rds dataset is available <a href="https://datasets.genepattern.org/data/Carter-Fraley/mat_notRegressed.rds">here</a></p>
+<p><a href="https://datasets.genepattern.org/data/Carter-Fraley/mat_notRegressed.rds">mat_notRegressed.rds</a></p>
 
 <h2>Requirements</h2>
 
@@ -106,11 +106,11 @@ For details of the Seurat implementation please refer to the <a href="https://sa
 		</tr>
                 <tr>
                         <td>output filename*</td>
-                        <td>The name of the output rds file containing a Seurat object.</td>
+                        <td>The output filename prefix used for all output files.</td>
                 </tr>
                  <tr>
                         <td>maximum dimension</td>
-                        <td>The maximum number of clusters to attempt to find</td>
+                        <td>The maximum number of clusters to attempt to find.</td>
                 </tr>
  
 
