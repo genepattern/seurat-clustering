@@ -1,13 +1,13 @@
-# Seurat.Clustering  urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00408:1.1
+# Seurat.Clustering  urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00408:1.2
 #Wed Jul 14 03:37:11 UTC 2021
 JVMLevel=
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:1.1
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00408\:1.2
 author=Satija Lab New York Genome Canter, Wrapped as a module by Ted Liefeld & Edwin Juarez, UCSD School of Medicine.;UCSD - Mesirov Lab
 categories=clustering;singlecell
 commandLine=Rscript --no-save --quiet --slave --no-restore <libdir>run_seurat_clustering.R --input.file\=<input.seurat.rds.file> --output.file\=<output.filename> --max_dim\=<maximum_dimension> --resolution\=<resolution> --reduction\=<reduction> --nmarkers\=<nmarkers> --seed\=<seed>
 cpuType=any
 description=Companion module for the <a href\="https\://notebook.genepattern.org/services/sharing/notebooks/376/preview/">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
-documentationUrl=https\://genepattern.github.io/SeuratClustering/
+documentationUrl=https\://genepattern.github.io/Seurat.Clustering/
 fileFormat=pdf,rds
 job.docker.image=genepattern/seurat-suite\:4.0.3
 language=any
@@ -17,7 +17,7 @@ os=any
 p1_MODE=IN
 p1_TYPE=FILE
 p1_default_value=
-p1_description=RDS file containing a seurat object
+p1_description=RDS file containing a preprocessed Seurat object
 p1_fileFormat=rds
 p1_flag=
 p1_name=input.seurat.rds.file
@@ -110,7 +110,7 @@ publicationDate=12/07/2020 16\:41
 quality=production
 requiredPatchLSIDs=
 requiredPatchURLs=
-src.repo=https\://github.com/genepattern/SeuratClustering
+src.repo=https\://github.com/genepattern/Seurat.Clustering
 taskDoc=doc.html
 taskType=clustering
 userid=edjuaro

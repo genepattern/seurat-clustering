@@ -98,5 +98,6 @@ write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_log2FC)
 # saveRDS(pbmc, file = "../output/pbmc3k_final.rds")
 
 #removing ".rds" in case it was there
-saveRDS(pbmc, file = paste(str_remove(opts$output.file, "\b.rds\b"), ".rds", sep=""))
+saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
+#saveRDS(pbmc, file = paste(str_remove(opts$output.file, "\b.rds\b"), ".rds", sep=""))
 print("All done, move along!")
