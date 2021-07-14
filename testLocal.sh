@@ -1,3 +1,2 @@
 rm -rf Job_1/*
-
-docker run -v $PWD:$PWD -w $PWD/Job_1 -t genepattern/seurat-clustering:1.0 /opt/R3.6/bin/Rscript --no-save --quiet --slave --no-restore  $PWD/run_seurat_clustering.R  --input.file=$PWD/test/data/pbmc_preprocessed.rds --output.file=postmarker --max_dim=10 --resolution=0.5 --reduction=umap --nmarkers=4
+docker run -v $PWD:/LOCAL -w /LOCAL/Job_1 -t genepattern/seurat-suite:4.0.3 Rscript --no-save --quiet --slave --no-restore  /LOCAL/run_seurat_clustering.R  --input.file=/LOCAL/data/test_run.rds --output.file=postmarker --max_dim=10 --resolution=0.5 --reduction=umap --nmarkers=4

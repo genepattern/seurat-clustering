@@ -80,9 +80,13 @@ DimPlot(pbmc, reduction = opts$reduction)
 print('Finding markers for all clusters.')
 pbmc.markers <- FindAllMarkers(pbmc, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
 print('Here are the top markers for each cluster')
-pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_logFC)
-write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_logFC),paste(opts$output.file, ".csv", sep=""), row.names = FALSE)
-write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_logFC),paste(opts$output.file, "_all_markers.csv", sep=""), row.names = FALSE)
+
+suppressMessages(suppressWarnings(library(Seurat)))
+pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_log2FC)
+
+print('Writing csv files, this may take a little while.')
+write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = opts$nmarkers, wt = avg_log2FC),paste(opts$output.file, ".csv", sep=""), row.names = FALSE)
+write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_log2FC),paste(opts$output.file, "_all_markers.csv", sep=""), row.names = FALSE)
 
 # This is too specific to PBMC, so it won't be implemented
 # new.cluster.ids <- c("Naive CD4 T", "Memory CD4 T", "CD14+ Mono", "B", "CD8 T", "FCGR3A+ Mono",
@@ -93,5 +97,6 @@ write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_logFC),
 
 # saveRDS(pbmc, file = "../output/pbmc3k_final.rds")
 
-saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
+#removing ".rds" in case it was there
+saveRDS(pbmc, file = paste(str_remove(opts$output.file, "\b.rds\b"), ".rds", sep=""))
 print("All done, move along!")
