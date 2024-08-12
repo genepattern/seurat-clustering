@@ -9,7 +9,7 @@ cpuType=any
 description=Companion module for the <a href\="https\://notebook.genepattern.org/services/sharing/notebooks/376/preview/">Seurat notebook</a>. Performs clustering and marker identification on single cell data.
 documentationUrl=https\://genepattern.github.io/Seurat.Clustering/
 fileFormat=pdf,rds
-job.docker.image=genepattern/seurat-suite\:4.0.3
+job.docker.image=genepattern/seurat-suite:4.1
 language=any
 minGenePatternVersion=3.9.13
 name=Seurat.Clustering

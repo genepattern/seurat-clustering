@@ -18,7 +18,9 @@ suppressMessages(suppressWarnings(library(optparse)))
 suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(Seurat)))
 
-# Print the sessionInfo so that there is a listing of loaded packages,
+## h5ad conversion
+suppressMessages(suppressWarnings(library(SeuratDisk)))
+
 # the current version of R, and other environmental information in our
 # stdout file.  This can be useful for reproducibility, troubleshooting
 # and comparing between runs.
@@ -75,6 +77,7 @@ DimPlot(pbmc, reduction = opts$reduction)
 # cluster1.markers <- FindMarkers(pbmc, ident.1 = 1, min.pct = 0.25)
 # head(cluster1.markers, n = 5)
 
+
 #ADD min.pc and logfc.threshold as MODULE PARAMETERS
 # find markers for every cluster compared to all remaining cells, report only the positive ones
 print('Finding markers for all clusters.')
@@ -100,4 +103,11 @@ write.csv(pbmc.markers %>% group_by(cluster) %>% top_n(n = n(), wt = avg_log2FC)
 #removing ".rds" in case it was there
 saveRDS(pbmc, file = paste(opts$output.file, ".rds", sep=""))
 #saveRDS(pbmc, file = paste(str_remove(opts$output.file, "\b.rds\b"), ".rds", sep=""))
+
+# Save h5ad file
+SaveH5Seurat(pbmc, filename = paste(opts$output.file, '.h5Seurat', sep = ''))
+Convert(paste(opts$output.file, '.h5Seurat', sep = ''), dest = 'h5ad')
+
+
+
 print("All done, move along!")
