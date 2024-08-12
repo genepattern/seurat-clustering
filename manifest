@@ -114,4 +114,4 @@ src.repo=https\://github.com/genepattern/Seurat.Clustering
 taskDoc=doc.html
 taskType=clustering
 userid=edjuaro
-version=Updating to run Seurat 4.0.3
+version=Added functionality to output .h5ad file for Vitessce Visualizer Downstream visualizations. 
